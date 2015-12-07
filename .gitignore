@@ -1,2 +1,13 @@
-/vendor
+.DS_Store
+*~
+
 /.vagrant
+
+/cookbooks
+/tmp
+/*.gem
+/.bundle
+/Cheffile.lock
+/pkg/*
+/tmp
+/vendor
