@@ -11,7 +11,7 @@ You'll probably want the following:
 
 ## Installation
 ### Download the repo
-    $ git clone https://github.com/dereknutile/communications-contact-directory.git /path/to/project
+    $ git clone https://github.com/BrambleBeard/app/archive/master.zip /path/to/project
 
 ### Start the application
     $ cd /path/to/project
