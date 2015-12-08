@@ -1,49 +1,51 @@
-# VLEMP - Vagrant LEMP
+# Bramblebeard Application
 
-## Overview
-This is a seeder to build a simple **L**inux **E**ngine x (nginx) **M**ySQL **P**HP Vagrant stack for development.
+## Prerequisites
 
-The goal of this project is to create a virtual machine that can be installed once and reused by any number of PHP applications.
+You'll probably want the following:
 
-## Included Software
-
- * [Ubuntu](http://ubuntu.com/) 14.04
- * [PHP5-FPM](http://php-fpm.org/)
- * [MCrypt](http://mcrypt.sourceforge.net/)
- * [Composer](https://getcomposer.org/)
- * [Nginx](http://nginx.org/)
- * [MySQL](https://www.mysql.com/)
- * [Sqlite](http://www.sqlite.org/)
- * [Redis](http://redis.io/)
- * [RabbitMQ](https://www.rabbitmq.com/)
- * [NodeJS](https://nodejs.org/)
- * [Bower](http://bower.io/)
- * [Grunt](http://gruntjs.com/)
- * [Gulp](http://gulpjs.com/)
-
-### Software Install Todo List
- * [SASS](http://sass-lang.com/)
-
-## Requirements
-
-* [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](http://www.vagrantup.com/)
+* [Vagrant](https://www.vagrantup.com/)
+* [VMware](http://www.vmware.com/)
+* [Git](https://git-scm.com/)
+* If you're running Windows, an ssh tool like [Putty](http://www.putty.org/)
 
 ## Installation
-  1. Confirm the requirements above are installed.
-  2. Clone this repo by opening a terminal:
-    $ cd /path/you/want/to/develop/in
-    $ git clone https://github.com/dereknutile/lemp-vagrant
-    $ cd lemp-vagrant
-  3. Provision and boot the vagrant server:
-    $ `vagrant up`
-  4. Once the server is provisioned and running, visit the test page: [http://localhost:8080](http://localhost:8080).
+### Download the repo
+    $ git clone https://github.com/dereknutile/communications-contact-directory.git /path/to/project
 
-## Developing with Lemp-Vagrant
-  (coming)
+### Start the application
+    $ cd /path/to/project
+    $ vagrant up
 
+### Configure the database
+1. Copy the `core/config/database.example.php` to `core/config/database.php`.
+2. Open the file `core/config/database.php` in an editor and fill in the connection variables -- namely, **host**, **database**, **username** and **password**; note your database name here.
 
-## Accessing your server
-  1. Open a terminal:
-    $ cd /path/to/your/lemp-vagrant/
+### Access the application using SSH
     $ vagrant ssh
+
+### Create the database
+    $ mysql -uroot -proot
+    $ create database {database_name_from_above_step};
+
+
+### Seed the database
+    $ php artisan db:seed
+
+
+### Update application
+    $ cd /vagrant/
+    $ bower install
+    $ cd /vagrant/core/
+    $ composer install
+
+### Test
+Browse to [http://localhost:8080/](http://localhost:8080/).
+
+#### Note
+If you see an error similar to: ` No supported encrypter found. The cipher and / or key length are invalid.`, you will need to generate a key using this command:
+
+    $ php artisan key:generate
+    Application key [new_key] set successfully.
+
+Once you have the `[new_key]`, you need to enter that key in `core/config/app.php` by replacing the value in the line that looks like this: `'key' => env('APP_KEY', 'SomeRandomString')`.
