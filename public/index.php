@@ -1,57 +1,70 @@
-<html>
-  <head>
-    <title>VLEMP</title>
+<?php
 
-    <link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylorotwell@gmail.com>
+ */
 
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        color: #aaa;
-        display: table;
-        font-weight: 100;
-        font-family: 'Roboto';
-        text-align: center;
-      }
+/*
+|--------------------------------------------------------------------------
+| Application path
+|--------------------------------------------------------------------------
+|
+| Customize your application path here.
+|
+*/
 
-      .container {
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-      }
+// $app_path = __DIR__.'/../'; #default
+$app_path = __DIR__.'/../app/';
 
-      .content {
-        width: 640px;
-        display: inline-block;
-      }
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels nice to relax.
+|
+*/
 
-      .title {
-        font-family: 'Raleway';
-        font-size: 48px;
-        color: #001;
-        margin-bottom: 40px;
-      }
+require $app_path.'bootstrap/autoload.php';
 
-      p {
-        font-size: 20px;
-        line-height: 30px;
-        color: #011;
-        text-align: left;
-      }
-    </style>
-  </head>
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let us turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
 
-  <body>
-    <div class="container">
-      <div class="content">
-        <div class="title"><?php echo "Your Vagrant LEMP installation is good to go!"; ?></div>
-        <p>This index.php file is located in the root of this installation under <code>/public/</code>.  You can delete this index.php file and start developing your code in the public directory now!</p>
-        <p>The <a href="https://github.com/dereknutile/vlemp" target="_blank">VLEMP Github repository</a> has more information about the default server configuration, installed software, and tools.</p>
-      </div><!-- /.content -->
-    </div><!-- /.container -->
-  </body>
-</html>
+$app = require_once $app_path.'bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
+
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
+
+$response->send();
+
+$kernel->terminate($request, $response);
