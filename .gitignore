@@ -2,12 +2,10 @@
 *~
 
 /.vagrant
-
 /cookbooks
 /tmp
 /*.gem
 /.bundle
 /Cheffile.lock
 /pkg/*
-/tmp
 /vendor
