@@ -68,7 +68,7 @@ inst 'Nginx' nginx
 sudo cat > /etc/nginx/sites-available/default <<'EOF'
 server {
   server_name localhost;
-  root /vagrant/public;
+  root /vagrant/project/public;
   sendfile off;
 
   gzip_static on;
@@ -148,6 +148,7 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 # inst 'MySQL Client Core' mysql-client-core-5.5
 inst 'MySQL Server' mysql-server
 inst 'MySQL Client Library' libmysqlclient-dev
+echo "create database bramblebeard" | mysql -u root -p root
 ################################################################################
 
 
@@ -159,9 +160,9 @@ sudo php5enmod mcrypt
 echo Install Composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/
 mv /usr/local/bin/composer.phar /usr/local/bin/composer
-echo "Adding /vagrant/bin to path."
+echo "Adding Composer to path"
 echo 'export PATH="/home/vagrant/.composer/vendor/bin:$PATH"' >> /home/vagrant/.bashrc
-composer global require drush/drush
+# composer global require drush/drush
 echo Composer update
 composer global update
 ################################################################################
