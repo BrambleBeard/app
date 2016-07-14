@@ -148,7 +148,7 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 # inst 'MySQL Client Core' mysql-client-core-5.5
 inst 'MySQL Server' mysql-server
 inst 'MySQL Client Library' libmysqlclient-dev
-echo "create database bramblebeard" | mysql -u root -p root
+echo "create database bramblebeard" | mysql -uroot -proot
 ################################################################################
 
 
