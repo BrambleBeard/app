@@ -20,18 +20,11 @@ You'll probably want the following:
 
 ### Install
     $ vagrant ssh
-    $ cd /vagrant/
-    $ bower install
     $ cd /vagrant/project
     $ composer install
 
 ### Configure the database and environment
-A blank database has been created named `bramblebeard`.  To configure the application to use this database, perform the following:
-
-    $ cp /vagrant/project/.env.example /vagrant/project/.env
-    $ vi /vagrant/project/.env
-
-Set the following values:
+A blank database has been created named `bramblebeard`.  To configure the application to use this database, you must edit the `/vagrant/project/.env` file and set the following values:
 
     DB_DATABASE=bramblebeard
     DB_USERNAME=root
@@ -44,8 +37,3 @@ Set the following values:
 
 ### Test
 Browse to [http://localhost:8080/](http://localhost:8080/).
-
-#### Note
-If you see an error similar to: ` No supported encrypter found. The cipher and / or key length are invalid.`, you will need to generate a key using this command:
-
-    $ php artisan key:generate
