@@ -18,6 +18,9 @@ You'll probably want the following:
     $ cd /path/to/project
     $ vagrant up
 
+## Initial Provisioning
+Continue with these instructions if this is the first time you've provisioned your server.
+
 ### Install
     $ vagrant ssh
     $ cd /vagrant/project
@@ -35,5 +38,8 @@ A blank database has been created named `bramblebeard`.  To configure the applic
     $ php artisan migrate
     $ php artisan db:seed
 
-### Test
+### Finish
 Browse to [http://localhost:8080/](http://localhost:8080/).
+
+### Notes
+See notes: [notes.md](notes.md)
