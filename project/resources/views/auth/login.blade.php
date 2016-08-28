@@ -1,4 +1,4 @@
-@extends('_layouts/landing')
+@extends('_layouts/splash')
 
 @section('content')
 
