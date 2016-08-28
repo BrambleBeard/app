@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages/splash');
-});
+Route::get('/',['as'=>'home', 'uses'=>'PagesController@splash']);
 
-// Route::controllers([
-//   'auth' => 'Auth\AuthController',
-//   'password' => 'Auth\PasswordController'
-// ]);
+Route::controllers([
+  'auth' => 'Auth\AuthController',
+  'password' => 'Auth\PasswordController'
+]);
+
+Route::get('about',['as'=>'about', 'uses'=>'PagesController@about']);
+Route::get('contact',['as'=>'contact', 'uses'=>'PagesController@contact']);
+Route::post('storeContact',['as'=>'storeContact', 'uses'=>'PagesController@storeContact']);
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +62,6 @@ Route::group(['middleware' => ['auth', 'onlyenabledusers', 'onlyallowadmins']], 
 Route::get('sign-in',['as'=>'login', 'uses'=>'Auth\AuthController@getLogin']);
 Route::get('sign-out',['as'=>'logout', 'uses'=>'Auth\AuthController@getLogout']);
 Route::get('reset',['as'=>'reset', 'uses'=>'Auth\PasswordController@getEmail']);
-
 
 
 /*
