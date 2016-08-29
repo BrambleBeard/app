@@ -6,7 +6,7 @@
 
 <body>
 
-    <div class="page-content">
+    <div class="main">
         @yield('content')
     </div>
 
