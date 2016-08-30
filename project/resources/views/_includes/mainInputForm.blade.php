@@ -1,7 +1,8 @@
 
+
 <form class="pure-form">
     <div id="toolbar"></div>
-    <div id="rich-text-editor"></div>
+    <div id="{{ $rteId }}"></div>
     <input class="pure-input-1 input-flatten" type="text" placeholder="Use an optional password">
     <div class="action-bar">
         <button class="pure-button">Save</button>

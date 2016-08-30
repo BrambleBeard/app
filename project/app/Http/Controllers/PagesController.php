@@ -12,7 +12,8 @@ class PagesController extends Controller
     {
         $title = "Home";
         $page_active = "home";
-        return view('pages.splash', compact('title','page_active'));
+        $rteId = "rich-text-editor";
+        return view('pages.splash', compact('title','page_active','rteId'));
         // return view('pages.splash');
     }
 
