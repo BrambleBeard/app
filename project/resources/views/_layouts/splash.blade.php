@@ -7,7 +7,8 @@
 
 <body>
 
-    <div class="main">
+    <div id="layout">
+        @include('_includes/navigation')
         @yield('content')
     </div>
 
