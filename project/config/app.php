@@ -10,6 +10,7 @@ return [
     */
 
     'site_title' => env('SITE_TITLE', 'Bramble Beard'),
+    'tagline' => env('SITE_TITLE', 'Securely shove your secrets in the brambly beard.'),
     'site_description' => env('SITE_DESCRIPTION', ''),
     'google_analytics' => env('GOOGLE_ANALYTICS', ''),
 
