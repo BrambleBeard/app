@@ -5,31 +5,23 @@
         <h1 class="page-title">{{ $title }}</h1>
     </div>
     <div class="content">
-        {!! Form::open( ['route' => 'storeContact'] ) !!}
+        {!! Form::open( ['route' => 'storeContact', 'class' => 'pure-form pure-form-stacked'] ) !!}
 
-            <div class="form-group">
-                {!! Form::label('name', 'Name', ['class'=>'required']) !!}
-                {!! Form::text('name', null, ['required', 'class'=>'form-control', 'placeholder'=>'First Last']) !!}
-            </div>
+            {!! Form::label('name', 'Name', ['class'=>'required']) !!}
+            {!! Form::text('name', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'First Last']) !!}
 
-            <div class="form-group">
-                {!! Form::label('email', 'Email', ['class'=>'required']) !!}
-                {!! Form::email('email', null, ['required', 'class'=>'form-control', 'placeholder'=>'email@domain.com']) !!}
-            </div>
+            {!! Form::label('email', 'Email', ['class'=>'required']) !!}
+            {!! Form::email('email', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'email@domain.com']) !!}
 
-            <div class="form-group">
-                {!! Form::label('subject', 'Subject', ['class'=>'required']) !!}
-                {!! Form::select('subject', ['General message'=>'General message','Name correction, addition, or removal'=>'Name correction, addition, or removal'], null, ['required', 'class'=>'form-control']) !!}
-            </div>
+            {!! Form::label('subject', 'Subject', ['class'=>'required']) !!}
+            {!! Form::select('subject', ['General message'=>'General message','Name correction, addition, or removal'=>'Name correction, addition, or removal'], null, ['required', 'class'=>'pure-input-1']) !!}
 
-            <div class="form-group">
-                {!! Form::label('message', 'Message', ['class'=>'required']) !!}
-                {!! Form::textarea('message', null, ['required', 'class'=>'form-control', 'placeholder'=>'Your message here.']) !!}
-            </div>
+            {!! Form::label('message', 'Message', ['class'=>'required']) !!}
+            {!! Form::textarea('message', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'Your message here.']) !!}
 
-            <div class="form-group">
-                {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
-                <a href="{{ route('home') }}" class="btn btn-default">Cancel</a>
+            <div class="action-bar">
+                <a href="{{ route('home') }}" class="pure-button">Cancel</a>
+                {!! Form::submit('Submit', ['class'=>'pure-button pure-button-primary']) !!}
             </div>
 
         {!! Form::close() !!}
