@@ -5,7 +5,7 @@
     <div class="header">
         <h1 class="page-title">Sign-In</h1>
     </div>
-    <div class="content">
+    <div class="content content-narrow">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>

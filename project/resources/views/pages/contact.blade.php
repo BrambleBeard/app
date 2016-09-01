@@ -4,7 +4,7 @@
     <div class="header">
         <h1 class="page-title">{{ $title }}</h1>
     </div>
-    <div class="content">
+    <div class="content content-narrow">
         {!! Form::open( ['route' => 'storeContact', 'class' => 'pure-form pure-form-stacked'] ) !!}
 
             {!! Form::label('name', 'Name', ['class'=>'required']) !!}
