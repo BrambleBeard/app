@@ -12,16 +12,32 @@
         </a>
 
         <ul class="pure-menu-list">
-            <li class="pure-menu-item">
+            <li class="pure-menu-item
+                @if ($page_active == 'home')
+                    active
+                @endif
+                ">
                 <a href="{{ route('home') }}" class="pure-menu-link">Home</a>
             </li>
-            <li class="pure-menu-item">
+            <li class="pure-menu-item
+                @if ($page_active == 'about')
+                    active
+                @endif
+                ">
                 <a href="{{ route('about') }}" class="pure-menu-link">About</a>
             </li>
-            <li class="pure-menu-item">
+            <li class="pure-menu-item
+                @if ($page_active == 'contact')
+                    active
+                @endif
+                ">
                 <a href="{{ route('contact') }}" class="pure-menu-link">Contact</a>
             </li>
-            <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
+            <li class="pure-menu-item
+                @if ($page_active == 'auth')
+                    active
+                @endif
+                " class="menu-item-divided pure-menu-selected">
                 <a href="{{ route('login') }}" class="pure-menu-link">Sign-in</a>
             </li>
         </ul>
