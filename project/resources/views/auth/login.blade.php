@@ -17,30 +17,23 @@
         </div>
         @endif
 
-        <form class="form validate-form" role="form" method="POST" action="{{ url('/auth/login') }}">
+        <form class="form validate-form pure-form pure-form-stacked" role="form" method="POST" action="{{ url('/auth/login') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <div class="form-group">
-                <label class="control-label required">Email Address</label>
-                <input type="email" class="form-control required" data-parsley-type="email" name="email" value="{{ old('email') }}" required>
-            </div>
+            <label class="control-label required">Email Address</label>
+            <input type="email" class="pure-input-1 required" data-parsley-type="email" name="email" value="{{ old('email') }}" required>
 
-            <div class="form-group">
-                <label class="control-label required">Password</label>
-                <input type="password" class="form-control required" name="password" required>
-            </div>
+            <label class="control-label required">Password</label>
+            <input type="password" class="pure-input-1 required" name="password" required>
 
-            <div class="form-group">
-                <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="remember"> Remember Me
-                </label>
-                </div>
-            </div>
+            <label>
+                <input type="checkbox" name="remember"> Remember Me
+            </label>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <p class="subtle"><a class="btn btn-link" href="{{ route('reset') }}"><i class="fa fa-life-ring"></i>&nbsp;Did you forget your password?</a></p>
+            <div class="action-bar">
+                <a href="{{ route('home') }}" class="pure-button">Cancel</a>
+                <a href="{{ route('reset') }}" class="pure-button">Forgot</a>
+                <button type="submit" class="pure-button pure-button-primary">Login</button>
             </div>
         </form>
     </div>
