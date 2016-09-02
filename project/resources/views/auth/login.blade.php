@@ -21,7 +21,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <label class="control-label required">Email Address</label>
-            <input type="email" class="pure-input-1 required" data-parsley-type="email" name="email" value="{{ old('email') }}" required>
+            <input type="email" class="pure-input-1 required" data-parsley-type="email" name="email" value="{{ old('email') }}" placeholder="email@domain.com" required>
 
             <label class="control-label required">Password</label>
             <input type="password" class="pure-input-1 required" name="password" required>
