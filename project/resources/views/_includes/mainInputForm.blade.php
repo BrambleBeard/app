@@ -7,7 +7,7 @@
     <div class="action-bar">
         <button class="pure-button">Save</button>
         <button class="pure-button">Email</button>
-        <button class="pure-button">Create</button>
+        <button class="pure-button pure-button-primary">Create</button>
     </div>
 </form>
 <!-- /.pure-form -->
