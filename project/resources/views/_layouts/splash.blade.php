@@ -8,6 +8,7 @@
 <body>
 
     <div id="layout">
+        @include('_includes/flash')
         @include('_includes/navigation')
         @yield('content')
     </div>
