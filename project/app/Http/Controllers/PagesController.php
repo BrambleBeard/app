@@ -14,7 +14,6 @@ class PagesController extends Controller
         $page_active = "home";
         $rteId = "rich-text-editor";
         return view('pages.splash', compact('title','page_active','rteId'));
-        // return view('pages.splash');
     }
 
     public function about()
@@ -41,7 +40,8 @@ class PagesController extends Controller
     public function storeContact(Request $request)
     {
         $message = new Message;
-        $message->name = $request->name;
+        $message->first = $request->first;
+        $message->last = $request->last;
         $message->email = $request->email;
         $message->subject = $request->subject;
         $message->message = $request->message;
