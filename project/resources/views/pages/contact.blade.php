@@ -7,14 +7,21 @@
     <div class="content content-narrow">
         {!! Form::open( ['route' => 'storeContact', 'class' => 'pure-form pure-form-stacked'] ) !!}
 
-            {!! Form::label('name', 'Name', ['class'=>'required']) !!}
-            {!! Form::text('name', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'First Last']) !!}
+            {!! Form::label('first', 'First Name', ['class'=>'required']) !!}
+            {!! Form::text('first', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'First']) !!}
+
+            {!! Form::label('last', 'Last Name', ['class'=>'required']) !!}
+            {!! Form::text('last', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'Last']) !!}
 
             {!! Form::label('email', 'Email', ['class'=>'required']) !!}
             {!! Form::email('email', null, ['required', 'class'=>'pure-input-1', 'placeholder'=>'email@domain.com']) !!}
 
             {!! Form::label('subject', 'Subject', ['class'=>'required']) !!}
-            {!! Form::select('subject', ['General message'=>'General message','Name correction, addition, or removal'=>'Name correction, addition, or removal'], null, ['required', 'class'=>'pure-input-1']) !!}
+            {!! Form::select('subject', [
+                'General feedback'=>'General feedback',
+                'Issue or problem'=>'Issue or problem',
+                'Enhancement request'=>'Enhancement request',
+            ], null, ['required', 'class'=>'pure-input-1']) !!}
 
             {!! Form::label('message', 'Message', ['class'=>'required']) !!}
             {!! Form::textarea('message', null, ['required', 'class'=>'pure-input-1', 'rows'=>4, 'placeholder'=>'Your message here.']) !!}
