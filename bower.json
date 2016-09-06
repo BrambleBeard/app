@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "~2.1.4",
     "fontawesome": "~4.6.3",
     "purecss": "0.6.0",
     "quill": "~1.0.0"
