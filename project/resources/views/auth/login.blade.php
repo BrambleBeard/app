@@ -3,7 +3,8 @@
 
 @section('content')
     <div class="header">
-        <h1 class="page-title">Sign-In</h1>
+        <h1>{{ Config::get('app.site_title') }}</h1>
+        <h2>Sign-In</h2>
     </div>
     <div class="content content-narrow">
         @if (count($errors) > 0)
