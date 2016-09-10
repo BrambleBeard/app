@@ -1,5 +1,4 @@
-(function (window, document) {
-
+$(document).ready(function(){
     var layout   = document.getElementById('layout'),
         menu     = document.getElementById('menu'),
         menuLink = document.getElementById('menuLink');
@@ -31,5 +30,4 @@
         toggleClass(menu, active);
         toggleClass(menuLink, active);
     };
-
-}(this, this.document));
+});
