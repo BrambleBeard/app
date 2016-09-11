@@ -14,10 +14,16 @@ class CreateSecretsTable extends Migration
     {
         Schema::create('secrets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            // optional owner/userid
+            $table->integer('user_id')->nullable()->default(null);
+            // required content
             $table->text('content');
-            $table->string('url')->unique();
+            // optional passcode
             $table->string('passcode');
+            // unique url
+            $table->string('url')->unique();
+            // optional date/time secret expires
+            $table->dateTime('expires_at')->nullable();
             $table->timestamps();
         });
     }
