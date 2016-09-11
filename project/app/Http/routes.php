@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
 Route::get('/', ['as'=>'home', 'uses'=>'PagesController@splash']);
 Route::get('about',['as'=>'about', 'uses'=>'PagesController@about']);
 Route::get('contact',['as'=>'contact', 'uses'=>'PagesController@contact']);
+Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'PagesController@storeSecret']);
 Route::post('storeContact',['as'=>'storeContact', 'uses'=>'PagesController@storeContact']);
 // Authentication registration routes...
 Route::get('login',['as'=>'login', 'uses'=>'Auth\AuthController@getLogin']);

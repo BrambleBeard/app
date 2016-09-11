@@ -33,6 +33,21 @@ class PagesController extends Controller
     }
 
     /**
+     * Store a secret.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function storeSecret(Request $request)
+    {
+        $secret = new Secret;
+
+        $secret->save();
+        session()->flash('flash_success','Secret created.');
+        return redirect()->route('home');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
