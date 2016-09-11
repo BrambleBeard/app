@@ -90,6 +90,18 @@ code,pre {
 /* custom
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+.pure-form input[type=text], .pure-form input[type=password], .pure-form input[type=email], .pure-form input[type=url], .pure-form input[type=date], .pure-form input[type=month], .pure-form input[type=time], .pure-form input[type=datetime], .pure-form input[type=datetime-local], .pure-form input[type=week], .pure-form input[type=number], .pure-form input[type=search], .pure-form input[type=tel], .pure-form input[type=color], .pure-form select, .pure-form textarea {
+    // padding: .5em .6em;
+    // display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    border-radius: 0px;
+    // vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
@@ -405,4 +417,8 @@ li.pure-menu-item.active {
     padding: .5em;
     cursor: pointer;
     text-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+}
+
+.fa {
+    padding-right: .5em;
 }
