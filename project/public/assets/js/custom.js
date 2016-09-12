@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    // responsive menu
     var layout   = document.getElementById('layout'),
         menu     = document.getElementById('menu'),
         menuLink = document.getElementById('menuLink');
