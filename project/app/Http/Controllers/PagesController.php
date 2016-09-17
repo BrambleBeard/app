@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Message;
+use App\Secret;
 use App\Http\Requests;
 
 class PagesController extends Controller
@@ -44,7 +45,8 @@ class PagesController extends Controller
         $secret->user_id = $request->user_id;
         $secret->content = $request->content;
         $secret->passcode = $request->passcode;
-        $secret->url = $request->url;
+        $secret->url = "RandomizedURLGoesHere";
+        // $secret->url = $request->url;
         // $secret->expires_at = $request->expires_at;
 
         $secret->save();
