@@ -41,6 +41,11 @@ class PagesController extends Controller
     public function storeSecret(Request $request)
     {
         $secret = new Secret;
+        $secret->user_id = $request->user_id;
+        $secret->content = $request->content;
+        $secret->passcode = $request->passcode;
+        $secret->url = $request->url;
+        // $secret->expires_at = $request->expires_at;
 
         $secret->save();
         session()->flash('flash_success','Secret created.');
