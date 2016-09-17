@@ -1,8 +1,8 @@
 
-{!! Form::open( ['route' => 'storeSecret', 'class' => 'pure-form'] ) !!}
-    <div id="toolbar"></div>
+{!! Form::open( ['route' => 'storeSecret', 'class' => 'pure-form', 'novalidate'] ) !!}
+    <!-- <div id="toolbar"></div> -->
     {!! Form::textarea('content', null, ['required', 'id'=>$rteId, 'placeholder'=>'Last']) !!}
-    {!! Form::text('passcode', null, ['required', 'class'=>'pure-input-1 input-flatten', 'placeholder'=>'Use an optional password']) !!}
+    {!! Form::text('passcode', null, ['class'=>'pure-input-1 input-flatten', 'placeholder'=>'Use an optional password']) !!}
     <div class="action-bar">
         <button class="pure-button"><i class="fa fa-save"></i>Save</button>
         <button class="pure-button"><i class="fa fa-envelope-o"></i>Email expiring URL</button>
