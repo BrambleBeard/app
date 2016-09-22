@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <link rel="stylesheet" href="{{ asset('/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('/assets/css/quill.snow.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('/assets/css/quill.snow.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('/assets/css/custom.min.css') }}">
 
 
