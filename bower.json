@@ -20,6 +20,7 @@
     "fontawesome": "~4.6.3",
     "purecss": "0.6.0",
     "quill": "~1.0.0",
-    "tinymce": "~4.3.4"
+    "tinymce": "~4.3.4",
+    "summernote": "~0.8.2"
   }
 }
