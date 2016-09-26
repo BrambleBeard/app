@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Validator;
 use App\Message;
 use App\Secret;
 use App\Http\Requests;
@@ -41,16 +42,23 @@ class PagesController extends Controller
      */
     public function storeSecret(Request $request)
     {
-        $secret = new Secret;
-        $secret->user_id = $request->user_id;
-        $secret->content = $request->content;
-        $secret->passcode = $request->passcode;
-        $secret->url = "RandomizedURLGoesHere";
-        // $secret->url = $request->url;
-        // $secret->expires_at = $request->expires_at;
+        $validator = Validator::make($request->all(), [
+            'content' => 'required',
+        ]);
 
-        $secret->save();
-        session()->flash('flash_success','Secret created.');
+        if ($validator->fails()) {
+            session()->flash('flash_info','Validation error.');
+        } else {
+            $secret = new Secret;
+            $secret->user_id = $request->user_id;
+            $secret->content = $request->content;
+            $secret->passcode = $request->passcode;
+            $secret->url = $this->createUrlHash();
+            // $secret->expires_at = $request->expires_at;
+            $secret->save();
+            session()->flash('flash_success','Secret created, url is: '.$secret->url.'.');
+        }
+
         return redirect()->route('home');
     }
 
@@ -72,5 +80,32 @@ class PagesController extends Controller
         $message->save();
         session()->flash('flash_success','Thank you for your message.');
         return redirect()->route('home');
+    }
+
+    /**
+     * Create a url hash
+     *
+     * @param  Integer $length
+     * @return string
+     */
+    private function createUrlHash($length = null)
+    {
+        $source = 'abcdefghjkmnpqrstwxyzABCDEFGHKLMNOPQRSTWXYZ';
+        $url = '';
+        mt_srand((double)microtime()*1000000);
+
+        // We can force the length of the hash by passing it to the function
+        // otherwise, the length is a randomly created integer between 6 - 12
+        if(!$length)
+        {
+            $length = rand(6, 12);
+        }
+
+        while (strlen($url) < $length)
+        {
+            $url .= $source{mt_rand(0, strlen($source)-1)};
+        }
+
+        return $url;
     }
 }
