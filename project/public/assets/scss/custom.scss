@@ -54,7 +54,7 @@ $colorDark: #001;
 $colorBlack: #27343d; /*dark slate*/
 
 $colorPrimary: #222222; /*black-gray*/
-$colorSecondary: #a3a380;
+$colorSecondary: #0078e7;
 $colorHighlightPrimary: #ddd;
 $colorHighlightSecondary: #eee;
 
@@ -178,6 +178,10 @@ code,pre {
     background: $colorSecondary;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.25), 4px 0 12px rgba(0,0,0,0.45);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
     /*
     All anchors inside the menu should be styled like this.
@@ -373,6 +377,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
 li.pure-menu-item.active {
     background: darken( $colorSecondary, 8% );
+    color: #fff;
 }
 
 .well {
