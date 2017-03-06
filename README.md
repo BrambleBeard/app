@@ -1,4 +1,8 @@
-# Bramblebeard Application
+![BrambleBeard Logo](https://github.com/BrambleBeard/bramblebeard.github.io/blob/master/assets/ico/favicon.png)
+# BrambleBeard Application
+
+## Screenshot
+![Toolbox Dashboard](https://github.com/BrambleBeard/bramblebeard.github.io/blob/master/assets/img/screenshot.png)
 
 ## Prerequisites
 
