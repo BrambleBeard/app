@@ -1,7 +1,6 @@
 import Parchment from 'parchment';
 import clone from 'clone';
 import equal from 'deep-equal';
-import BreakBlot from '../blots/break';
 import Emitter from './emitter';
 import logger from './logger';
 
@@ -20,7 +19,14 @@ class Selection {
   constructor(scroll, emitter) {
     this.emitter = emitter;
     this.scroll = scroll;
+    this.composing = false;
     this.root = this.scroll.domNode;
+    this.root.addEventListener('compositionstart', () => {
+      this.composing = true;
+    });
+    this.root.addEventListener('compositionend', () => {
+      this.composing = false;
+    });
     this.cursor = Parchment.create('cursor', this);
     // savedRange is last non-null range
     this.lastRange = this.savedRange = new Range(0, 0);
@@ -37,6 +43,7 @@ class Selection {
       }
     });
     this.emitter.on(Emitter.events.SCROLL_BEFORE_UPDATE, () => {
+      if (!this.hasFocus()) return;
       let native = this.getNativeRange();
       if (native == null) return;
       if (native.start.node === this.cursor.textNode) return;  // cursor.restore() will handle
@@ -52,13 +59,12 @@ class Selection {
 
   focus() {
     if (this.hasFocus()) return;
-    let bodyTop = document.body.scrollTop;
     this.root.focus();
-    document.body.scrollTop = bodyTop;
     this.setRange(this.savedRange);
   }
 
   format(format, value) {
+    if (this.scroll.whitelist != null && !this.scroll.whitelist[format]) return;
     this.scroll.update();
     let nativeRange = this.getNativeRange();
     if (nativeRange == null || !nativeRange.native.collapsed || Parchment.query(format, Parchment.Scope.BLOCK)) return;
@@ -84,7 +90,7 @@ class Selection {
     let scrollLength = this.scroll.length();
     index = Math.min(index, scrollLength - 1);
     length = Math.min(index + length, scrollLength - 1) - index;
-    let bounds, node, [leaf, offset] = this.scroll.leaf(index);
+    let node, [leaf, offset] = this.scroll.leaf(index);
     if (leaf == null) return null;
     [node, offset] = leaf.position(offset, true);
     let range = document.createRange();
@@ -94,9 +100,10 @@ class Selection {
       if (leaf == null) return null;
       [node, offset] = leaf.position(offset, true);
       range.setEnd(node, offset);
-      bounds = range.getBoundingClientRect();
+      return range.getBoundingClientRect();
     } else {
       let side = 'left';
+      let rect;
       if (node instanceof Text) {
         if (offset < node.data.length) {
           range.setStart(node, offset);
@@ -106,27 +113,20 @@ class Selection {
           range.setEnd(node, offset);
           side = 'right';
         }
-        var rect = range.getBoundingClientRect();
+        rect = range.getBoundingClientRect();
       } else {
-        var rect = leaf.domNode.getBoundingClientRect();
+        rect = leaf.domNode.getBoundingClientRect();
         if (offset > 0) side = 'right';
       }
-      bounds = {
+      return {
+        bottom: rect.top + rect.height,
         height: rect.height,
         left: rect[side],
-        width: 0,
-        top: rect.top
+        right: rect[side],
+        top: rect.top,
+        width: 0
       };
     }
-    let containerBounds = this.root.parentNode.getBoundingClientRect();
-    return {
-      left: bounds.left - containerBounds.left,
-      right: bounds.left + bounds.width - containerBounds.left,
-      top: bounds.top - containerBounds.top,
-      bottom: bounds.top + bounds.height - containerBounds.top,
-      height: bounds.height,
-      width: bounds.width
-    };
   }
 
   getNativeRange() {
@@ -163,7 +163,6 @@ class Selection {
   }
 
   getRange() {
-    if (!this.hasFocus()) return [null, null];
     let range = this.getNativeRange();
     if (range == null) return [null, null];
     let positions = [[range.start.node, range.start.offset]];
@@ -183,6 +182,7 @@ class Selection {
       }
     });
     let start = Math.min(...indexes), end = Math.max(...indexes);
+    end = Math.min(end, this.scroll.length() - 1);
     return [new Range(start, end-start), range];
   }
 
@@ -194,12 +194,19 @@ class Selection {
     if (range == null) return;
     let bounds = this.getBounds(range.index, range.length);
     if (bounds == null) return;
-    if (this.root.offsetHeight < bounds.bottom) {
-      let [line, ] = this.scroll.line(range.index + range.length);
-      this.root.scrollTop = line.domNode.offsetTop + line.domNode.offsetHeight - this.root.offsetHeight;
-    } else if (bounds.top < 0) {
-      let [line, ] = this.scroll.line(range.index);
-      this.root.scrollTop = line.domNode.offsetTop;
+    let limit = this.scroll.length()-1;
+    let [first, ] = this.scroll.line(Math.min(range.index, limit));
+    let last = first;
+    if (range.length > 0) {
+      [last, ] = this.scroll.line(Math.min(range.index + range.length, limit));
+    }
+    if (first == null || last == null) return;
+    let scroller = this.scroll.scrollingContainer;
+    let scrollBounds = scroller.getBoundingClientRect();
+    if (bounds.top < scrollBounds.top) {
+      scroller.scrollTop -= (scrollBounds.top - bounds.top);
+    } else if (bounds.bottom > scrollBounds.bottom) {
+      scroller.scrollTop += (bounds.bottom - scrollBounds.bottom);
     }
   }
 
@@ -212,10 +219,21 @@ class Selection {
     if (selection == null) return;
     if (startNode != null) {
       if (!this.hasFocus()) this.root.focus();
-      let nativeRange = this.getNativeRange();
-      if (nativeRange == null || force ||
-          startNode !== nativeRange.start.node || startOffset !== nativeRange.start.offset ||
-          endNode !== nativeRange.end.node || endOffset !== nativeRange.end.offset) {
+      let native = (this.getNativeRange() || {}).native;
+      if (native == null || force ||
+          startNode !== native.startContainer ||
+          startOffset !== native.startOffset ||
+          endNode !== native.endContainer ||
+          endOffset !== native.endOffset) {
+
+        if (startNode.tagName == "BR") {
+          startOffset = [].indexOf.call(startNode.parentNode.childNodes, startNode);
+          startNode = startNode.parentNode;
+        }
+        if (endNode.tagName == "BR") {
+          endOffset = [].indexOf.call(endNode.parentNode.childNodes, endNode);
+          endNode = endNode.parentNode;
+        }
         let range = document.createRange();
         range.setStart(startNode, startOffset);
         range.setEnd(endNode, endOffset);
@@ -256,8 +274,9 @@ class Selection {
   }
 
   update(source = Emitter.sources.USER) {
-    let nativeRange, oldRange = this.lastRange;
-    [this.lastRange, nativeRange] = this.getRange();
+    let oldRange = this.lastRange;
+    let [lastRange, nativeRange] = this.getRange();
+    this.lastRange = lastRange;
     if (this.lastRange != null) {
       this.savedRange = this.lastRange;
     }

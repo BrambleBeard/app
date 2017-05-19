@@ -1,23 +1,24 @@
 import Embed from '../blots/embed';
 import Quill from '../core/quill';
+import Module from '../core/module';
 
 
 class FormulaBlot extends Embed {
   static create(value) {
     let node = super.create(value);
     if (typeof value === 'string') {
-      katex.render(value, node);
-      node.dataset.value = value;
+      window.katex.render(value, node);
+      node.setAttribute('data-value', value);
     }
     node.setAttribute('contenteditable', false);
     return node;
   }
 
   static value(domNode) {
-    return domNode.dataset.value;
+    return domNode.getAttribute('data-value');
   }
 
-  index(node, offset) {
+  index() {
     return 1;
   }
 }
@@ -26,11 +27,17 @@ FormulaBlot.className = 'ql-formula';
 FormulaBlot.tagName = 'SPAN';
 
 
-function Formula() {
-  if (window.katex == null) {
-    throw new Error('Formula module requires KaTeX.');
+class Formula extends Module {
+  static register() {
+    Quill.register(FormulaBlot, true);
   }
-  Quill.register(FormulaBlot, true);
+
+  constructor() {
+    super();
+    if (window.katex == null) {
+      throw new Error('Formula module requires KaTeX.');
+    }
+  }
 }
 
 
