@@ -1,12 +1,15 @@
 /*
 Use this sass command to create a clean, compact, and readable stylesheet.
-sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.css --style compact
+sass assets/scss/custom.scss:assets/css/custom.css --style compact
 
 Use this sass command to create a minified stylesheet.
-sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.min.css --style compressed
+sass assets/scss/custom.scss:assets/css/custom.min.css --style compressed
 */
 
+
 /* rem conversion cheatsheet */
+
+
 /*
  8px = 0.5rem
  9px = 0.5625rem
@@ -21,51 +24,70 @@ sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.min
 20px = 1.25rem
 */
 
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 /* fonts
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+
 /* common or base font */
-@import url(http://fonts.googleapis.com/css?family=Dosis);
-$fontBasePrimary: 'Dosis', Helvetica, Arial, sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,900');
+$fontBasePrimary: 'Source Sans Pro',
+Helvetica,
+Arial,
+sans-serif;
 
 /* secondary or print font */
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
-$fontPrintPrimary: 'Roboto Slab', Times, serif;
-@import url(http://fonts.googleapis.com/css?family=Raleway);
-$fontPrintSecondary: 'Raleway', Times, serif;
 
-/* font for script, cursive, or fancy rendering */
-@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-$fontFancyPrimary: 'Kaushan Script';
-
-/* technical, typewriter, monospace font typically used for pre or code tags */
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+$fontPrintPrimary: 'Bree Serif',
+Times,
+serif;
 @import url(http://fonts.googleapis.com/css?family=Inconsolata);
-$fontMonoPrimary: 'Inconsolata', Courier, monospace;
-
+$fontMonoPrimary: 'Inconsolata',
+Courier,
+monospace;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 /* colors
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-/* base white or black colors or variants */
-$colorLight: #fdfdfd; /*pale white*/
-$colorDark: #001;
-$colorBlack: #27343d; /*dark slate*/
 
-$colorPrimary: #222222; /*black-gray*/
-$colorSecondary: #0078e7;
+/* base white or black colors or variants */
+
+$colorLight: #fdfdfd;
+$colorPale: whitesmoke;
+$colorDark: #001;
+$colorBlack: #27343d;
+
+/*dark slate*/
+
+$colorPrimary: #222222;
+
+/*black-gray*/
+
+$colorSecondary: #a3a380;
 $colorHighlightPrimary: #ddd;
 $colorHighlightSecondary: #eee;
-
+$colorHyperlink: #3273dc;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 /* pixels
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 $menuWidth: 150px;
+$globalBorderRadius: 0px;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 /* resets
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -77,356 +99,165 @@ body {
 p {
     font-size: 1.2em;
     line-height: 1.5em;
+    padding-bottom: .5em;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: $fontPrintPrimary;
 }
 
-code,pre {
+code,
+pre {
     font-family: $fontMonoPrimary;
 }
+
+p {
+    font-family: $fontBasePrimary;
+    font-weight: 100;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    padding-bottom: .5em;
+}
+
+a {
+    color: lighten( $colorHyperlink, 15%);
+}
+
+a:hover,
+a:visited {
+    color: $colorHyperlink;
+}
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+/* framework overrides
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.heading {
+    text-transform: none;
+}
+
+.input {
+    border-radius: $globalBorderRadius;
+    box-shadow: none;
+}
+
+.box {
+    border-radius: $globalBorderRadius;
+    background: $colorPale;
+}
+
+.section {
+    // padding: 3rem 1.5rem;
+    padding: 0;
+}
+
+.nav-item img {
+    padding-right: 1em;
+}
+
+.nav {
+    margin-bottom: 2em;
+}
+
+.hero.has-landing-page-image p {
+    color: whitesmoke;
+}
+
+.hero.has-landing-page-image a {
+    color: $colorSecondary;
+}
+
+.hero.has-landing-page-image .nav {
+    background: $colorPale;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+.hero.has-landing-page-image .title {
+    color: $colorLight;
+}
+
+.hero-title {
+    font-family: $fontBasePrimary;
+    color: $colorLight;
+    text-shadow: 2px 2px 2px $colorDark;
+    font-size: 5em;
+    font-weight: 800;
+    padding-top: .5em;
+}
+
+.hero.is-dark a:not(.button) {
+    color: lighten( $colorHyperlink, 12%);
+}
+
+@media screen and (max-width: 999px) {
+    .hero-title {
+        font-size: 3em;
+        padding-top: .25em;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .hero-title {
+        font-size: 2em;
+        padding-top: .25em;
+    }
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 /* custom
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-.pure-form input[type=text], .pure-form input[type=password], .pure-form input[type=email], .pure-form input[type=url], .pure-form input[type=date], .pure-form input[type=month], .pure-form input[type=time], .pure-form input[type=datetime], .pure-form input[type=datetime-local], .pure-form input[type=week], .pure-form input[type=number], .pure-form input[type=search], .pure-form input[type=tel], .pure-form input[type=color], .pure-form select, .pure-form textarea {
-    // padding: .5em .6em;
-    // display: inline-block;
-    border: 1px solid #ccc;
-    box-shadow: none;
-    border-radius: 0px;
-    // vertical-align: middle;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.container-narrow {
+    max-width: 50%;
 }
 
-.pure-img-responsive {
-    max-width: 100%;
-    height: auto;
+.main-content {
+    padding-top: 1.75em;
+    padding-bottom: 2em;
 }
 
-#layout, #menu, .menu-link {
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-}
-
-#layout {
-    position: relative;
-    padding-left: 0;
-}
-
-#layout.active #menu {
-    left: $menuWidth;
-    width: $menuWidth;
-}
-
-#layout.active .menu-link {
-    left: $menuWidth;
-}
-
-
-.content {
-    margin: 0 auto;
-    padding: 0 2em;
-    max-width: 800px;
-    margin-bottom: 50px;
-    line-height: 1.6em;
-}
-
-.content-narrow {
-    max-width: 480px;
-}
-
-.header {
-     margin: 0;
-     color: $colorPrimary;
-     text-align: center;
-     padding: 1em 1em;
-}
-.header h1 {
-    margin: 0.2em 0;
-    font-size: 3em;
-    font-weight: 300;
-}
- .header h2 {
-    font-weight: 300;
-    color: lighten( $colorPrimary, 8% );
-    padding: 0;
-    margin-top: 0;
-}
-
-.content-subhead {
-    margin: 50px 0 20px 0;
-    font-weight: 300;
-    color: lighten( $colorDark, 12% );
-}
-
-#menu {
-    font-family: $fontMonoPrimary;
-    margin-left: -$menuWidth; /* "#menu" width */
-    width: $menuWidth;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: $colorSecondary;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    box-shadow: 4px 0 12px rgba(0,0,0,0.25), 4px 0 12px rgba(0,0,0,0.45);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-    /*
-    All anchors inside the menu should be styled like this.
-    */
-    #menu a {
-        color: $colorBlack;
-        border: none;
-        padding: 0.6em 0.3em;
-    }
-
-    /*
-    Remove all background/borders, since we are applying them to #menu.
-    */
-     #menu .pure-menu,
-     #menu .pure-menu ul {
-        border: none;
-        background: transparent;
-    }
-
-    /*
-    Add that light border to separate items into groups.
-    */
-    #menu .pure-menu ul,
-    #menu .pure-menu .menu-item-divided {
-    }
-        /*
-        Change color of the anchor links on hover/focus.
-        */
-        #menu .pure-menu li a:hover,
-        #menu .pure-menu li a:focus {
-            color: $colorLight;
-            background: darken( $colorSecondary, 30% );
-        }
-
-    /*
-    This styles the selected menu item `<li>`.
-    */
-    #menu .pure-menu-selected,
-    #menu .pure-menu-heading {
-        // background: #fff;
-    }
-        /*
-        This styles a link within a selected menu item `<li>`.
-        */
-        #menu .pure-menu-selected a {
-            color: #fff;
-        }
-
-    /*
-    This styles the menu heading.
-    */
-    #menu .pure-menu-heading {
-        font-size: 110%;
-        color: #fff;
-        margin: 0;
-    }
-
-
-/* -- Dynamic Button For Responsive Menu -------------------------------------*/
-
-/*
-The button to open/close the Menu is custom-made and not part of Pure. Here's
-how it works:
-*/
-
-/*
-`.menu-link` represents the responsive menu toggle that shows/hides on
-small screens.
-*/
-.menu-link {
-    position: fixed;
-    display: block; /* show this only on small screens */
-    top: 0;
-    left: 0; /* "#menu width" */
-    background: $colorSecondary;
-    font-size: 10px; /* change this value to increase/decrease button size */
-    z-index: 10;
-    width: 2em;
-    height: auto;
-    padding: 2.1em 1.6em;
-    box-shadow: 4px 0 12px rgba(0,0,0,0.25),4px 0 12px rgba(0,0,0,0.45);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-    .menu-link:hover,
-    .menu-link:focus {
-        background: darken( $colorSecondary, 22% );
-    }
-
-    .menu-link span {
-        position: relative;
-        display: block;
-    }
-
-    .menu-link span,
-    .menu-link span:before,
-    .menu-link span:after {
-        background-color: #fff;
-        width: 100%;
-        height: 0.2em;
-    }
-
-        .menu-link span:before,
-        .menu-link span:after {
-            position: absolute;
-            margin-top: -0.6em;
-            content: " ";
-        }
-
-        .menu-link span:after {
-            margin-top: 0.6em;
-        }
-
-
-/* -- Responsive Styles (Media Queries) ------------------------------------- */
-
-/*
-Hides the menu at `48em`, but modify this based on your app's needs.
-*/
-@media (min-width: 48em) {
-
-    .header,
-    .content {
-        padding-left: 2em;
-        padding-right: 2em;
-    }
-
-    #layout {
-        padding-left: $menuWidth; /* left col width "#menu" */
-        left: 0;
-    }
-    #menu {
-        left: $menuWidth;
-    }
-
-    .menu-link {
-        position: fixed;
-        left: $menuWidth;
-        display: none;
-    }
-
-    #layout.active .menu-link {
-        left: $menuWidth;
+@media screen and (max-width: 999px) {
+    .container-narrow {
+        max-width: 100%;
+        margin-left: .5em;
+        margin-right: .5em;
     }
 }
 
-@media (max-width: 48em) {
-    /* Only apply this when the window is small. Otherwise, the following
-    case results in extra padding on the left:
-        * Make the window small.
-        * Tap the menu to trigger the active state.
-        * Make the window large again.
-    */
-    #layout.active {
-        position: relative;
-        left: $menuWidth;
-    }
-}
-
-
-.pure-img-logo {
-    -webkit-filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.5));
-    filter: url(#drop-shadow);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=3, OffY=3, Color='#444')";
-    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=3, OffY=3, Color='#444')";
-}
-
-.pure-menu-list {
-    margin-top: 2em;
-    text-align: center;
-}
-
-#rich-text-editor {
-  height: 15em;
-}
-
-.action-bar {
+.push-right {
     float: right;
-    margin-top: 1em;
+    // right: 0;
 }
 
-.input-flatten {
-    margin-top: 1em;
-    padding: .5em .6em;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-shadow: none;
-    border-radius: 0px;
-    vertical-align: middle;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+footer {
+    margin-top: 3em;
 }
 
-li.pure-menu-item.active {
-    background: darken( $colorSecondary, 8% );
-    color: #fff;
+footer.hero p {
+    color: $colorPale;
 }
 
-.well {
-    border: 1px solid darken( $colorLight, 12% );
-    background: darken( $colorLight, 4% );
-    padding: 1em;
+.page-title {
+    padding: 1.75em 1em;
 }
 
-.narrow-container {
-    margin: 0 auto;
-    max-width: 500px;
-}
-
-.alert {
-    padding-top: .25em;
-    padding-bottom: .25em;
-}
-
-.alert-success {
-    background-color: #fffae5;
-    color: #000;
-}
-
-.alert-danger {
-    background-color: #c4453c;
-    color: #fff;
-}
-
-.alert-info {
-    background-color: #1f8dd6;
-    color: #fff;
-}
-
-.alert p {
-    // margin: 0 auto;
-    // max-width: 800px;
-    text-align: center;
-}
-
-.close {
-    float: right;
-    padding: .5em;
-    cursor: pointer;
-    text-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+.has-landing-page-image {
+    background-color: #F62459;
+    background-image: linear-gradient(rgba(9, 48, 40, 0.6), rgba(35, 122, 87, 0.6)), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1468499419136-228128db8f7a?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=);
 }
 
 .fa {
-    padding-right: .5em;
+    padding-right: .7em;
 }
