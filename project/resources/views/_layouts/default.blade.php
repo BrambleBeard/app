@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Default blade template -->
 <head>
     @include('_includes/head')
     @include('_includes/scripts')
@@ -8,8 +9,8 @@
 <body>
 
     <div id="layout">
-        @include('_includes/flash')
         @include('_includes/navigation')
+        @include('_includes/flash')
         @yield('content')
     </div>
 
