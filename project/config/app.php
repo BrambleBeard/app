@@ -9,10 +9,10 @@ return [
     |
     */
 
-    'site_title' => env('SITE_TITLE', 'Bramble Beard'),
-    'tagline' => env('SITE_TITLE', 'Securely shove your secrets in the brambly beard.'),
-    'site_description' => env('SITE_DESCRIPTION', ''),
-    'google_analytics' => env('GOOGLE_ANALYTICS', ''),
+    'app_title' => env('APP_TITLE', ''),
+    'app_description' => env('APP_DESCRIPTION', ''),
+    'tagline' => env('APP_TAGLINE', ''),
+    'app_analytics' => env('APP_ANALYTICS', ''),
 
     /*
     |--------------------------------------------------------------------------
