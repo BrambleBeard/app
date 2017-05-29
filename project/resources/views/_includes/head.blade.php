@@ -1,10 +1,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ Config::get('app.site_title') }}</title>
+<title>{{ Config::get('app.app_title') }}</title>
 
 <meta name="viewport" content="width=device-width">
-<meta name="description" content="{{ Config::get('app.site_description') }}">
+<meta name="description" content="{{ Config::get('app.app_description') }}">
 <link rel="canonical" href="http://bramblebeard.github.io//">
 
 <meta property="og:locale" content="en_US" />

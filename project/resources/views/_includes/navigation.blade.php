@@ -1,45 +1,27 @@
+<nav class="nav">
+    <div class="container">
+        <div class="nav-left">
+            <a class="nav-item" href="/">
+                <img src="{{ asset('/assets/img/logo.png') }}" alt="{{ Config::get('app.app_description') }}">
+            </a>
+        </div>
+        <!-- .nav-left -->
 
-<!-- Menu toggle -->
-<a href="#menu" id="menuLink" class="menu-link">
-    <!-- Hamburger icon -->
-    <span></span>
-</a>
+        <span class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <!-- .nav-toggle -->
 
-<div id="menu">
-    <div class="pure-menu">
-        <a class="pure-menu-heading" href="{{ route('home') }}">
-            <img src="{{ asset('/assets/img/logo.png') }}" alt="{{ Config::get('app.site_title') }}" class="pure-img-responsive pure-img-logo" title="{{ Config::get('app.site_title') }}">
-        </a>
-
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item
-                @if ($page_active == 'home')
-                    active
-                @endif
-                ">
-                <a href="{{ route('home') }}" class="pure-menu-link">Home</a>
-            </li>
-            <li class="pure-menu-item
-                @if ($page_active == 'about')
-                    active
-                @endif
-                ">
-                <a href="{{ route('about') }}" class="pure-menu-link">About</a>
-            </li>
-            <li class="pure-menu-item
-                @if ($page_active == 'contact')
-                    active
-                @endif
-                ">
-                <a href="{{ route('contact') }}" class="pure-menu-link">Contact</a>
-            </li>
-            <li class="pure-menu-item
-                @if ($page_active == 'auth')
-                    active
-                @endif
-                " class="menu-item-divided pure-menu-selected">
-                <a href="{{ route('login') }}" class="pure-menu-link">Sign-in</a>
-            </li>
-        </ul>
+        <div class="nav-right nav-menu">
+            <a class="nav-item is-tab" href="/new">New</a>
+            <a class="nav-item is-tab" href="/saved">Saved</a>
+            <a class="nav-item is-tab" href="/generate">Password</a>
+            <a class="nav-item is-tab" href="/account">Derek</a>
+            <a class="nav-item is-tab" href="/">Sign-Out</a>
+        </div>
+        <!-- ./nav-right -->
     </div>
-</div>
+    <!-- ./container -->
+</nav>
