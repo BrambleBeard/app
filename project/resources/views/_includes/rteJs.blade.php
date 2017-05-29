@@ -2,7 +2,7 @@
 <script>
     // rich text editor
     tinymce.init({
-        selector: '#{{ $rteId }}',
+        // selector: '#{{ $rteId }}',
         plugins: [],
         menu: [],
         plugins: "insertdatetime",
