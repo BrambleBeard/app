@@ -14,11 +14,9 @@
 <meta property="og:site_name" content="BrambleBeard" />
 <meta property="og:image" content="{{ asset('/assets/ico/favicon.png') }}" />
 
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<link rel="stylesheet" href="{{ asset('/assets/vendors/bulma/css/bulma.css') }}">
 <link rel="stylesheet" href="{{ asset('/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
-<!-- <link rel="stylesheet" href="{{ asset('/assets/css/quill.snow.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('/assets/css/custom.min.css') }}">
-
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
