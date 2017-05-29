@@ -14,7 +14,9 @@
 <meta property="og:site_name" content="BrambleBeard" />
 <meta property="og:image" content="{{ asset('/assets/ico/favicon.png') }}" />
 
-<link rel="stylesheet" href="{{ asset('/assets/vendors/bulma/css/bulma.css') }}">
+<link rel="icon" href="{{ asset('/assets/ico/favicon.png') }}">
+
+<link rel="stylesheet" href="{{ asset('/assets/vendor/bulma/css/bulma.css') }}">
 <link rel="stylesheet" href="{{ asset('/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/assets/css/custom.min.css') }}">
 
