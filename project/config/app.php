@@ -11,9 +11,12 @@ return [
 
     'app_title' => env('APP_TITLE', ''),
     'app_description' => env('APP_DESCRIPTION', ''),
-    'tagline' => env('APP_TAGLINE', ''),
+    'app_tagline' => env('APP_TAGLINE', ''),
+    'app_email' => env('APP_EMAIL', ''),
+    'app_favicon' => env('APP_FAVICON', ''),
+    'app_source_url' => env('APP_SOURCE_URL', ''),
     'app_analytics' => env('APP_ANALYTICS', ''),
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
