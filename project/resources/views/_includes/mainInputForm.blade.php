@@ -11,7 +11,7 @@
 
     <div class="field">
         <div class="control">
-            {!! Form::text('passcode', null, ['class'=>'input', 'placeholder'=>'Use an optional password']) !!}
+            {!! Form::text('passcode', null, ['class'=>'input', 'placeholder'=>'Optionally, provide a password ...']) !!}
         </div>
     </div>
     <!-- /.field -->
