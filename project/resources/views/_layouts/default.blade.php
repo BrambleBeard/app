@@ -14,6 +14,7 @@
         @yield('content')
     </div>
 
+    @include('_includes/footer')
     @include('_includes/analytics')
 </body>
 </html>
