@@ -49,6 +49,13 @@ class PagesController extends Controller
         return view('pages.saved', compact('title','page_active'));
     }
 
+    public function generateSecret()
+    {
+        $title = "Generate Secrets";
+        $page_active = "generate";
+        return view('pages.generate', compact('title','page_active'));
+    }
+
     /**
      * Store a secret.
      *
