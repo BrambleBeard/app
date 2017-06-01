@@ -1,20 +1,21 @@
 
 @if(Session::has('flash_success'))
-<div class="alert alert-success alert-fade-away">
+<div class="notification is-success alert-fade-away">
   <p>{{ session('flash_success') }}</p>
 </div>
 @endif
 
 @if(Session::has('flash_danger'))
-<div class="alert alert-danger">
-  <i class="fa fa-times close" data-dismiss="alert" aria-label="Close"></i>
+<div class="notification is-danger">
+  <i class="fa fa-times close" ></i>
   <p>{{ session('flash_danger') }}</p>
+  <button class="delete" data-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(Session::has('flash_info'))
-<div class="alert alert-info">
-  <i class="fa fa-times close" data-dismiss="alert" aria-label="Close"></i>
+<div class="notification is-info">
   <p>{{ session('flash_info') }}</p>
+  <button class="delete" data-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
