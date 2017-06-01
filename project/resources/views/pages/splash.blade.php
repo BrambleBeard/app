@@ -18,7 +18,7 @@
                 <div class="column is-5">
                     <h2 class="title is-3">{{ Config::get('app.app_tagline') }}</h2>
                     <p>Enter your secret information &mdash; passwords, connection strings, secret messages, etc. and share a unique expiring link.  This will keep your private information out of your saved and logged email.</p>
-                    <p><a href="/auth" class="button"><i class="fa fa-pencil"></i>Sign-in or Sign-up</a></p>
+                    <p><a href="/login" class="button"><i class="fa fa-pencil"></i>Sign-in or Sign-up</a></p>
                 </div>
             </div>
         </div>
