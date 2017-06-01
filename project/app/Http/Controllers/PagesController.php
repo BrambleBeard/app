@@ -34,6 +34,21 @@ class PagesController extends Controller
         return view('pages.contact', compact('title','page_active'));
     }
 
+    public function newSecret()
+    {
+        $title = "New Secret";
+        $page_active = "new";
+        $rteId = "rich-text-editor";
+        return view('pages.new', compact('title','page_active','rteId'));
+    }
+
+    public function savedSecrets()
+    {
+        $title = "Saved Secrets";
+        $page_active = "saved";
+        return view('pages.saved', compact('title','page_active'));
+    }
+
     /**
      * Store a secret.
      *
