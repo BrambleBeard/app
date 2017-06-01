@@ -1,7 +1,7 @@
 @extends('_layouts/default')
 
 @section('content')
-<section class="section">
+<section class="section is-medium">
     <div class="container container-narrow">
 
         <h2 class="title is-2">About {{ Config::get('app.app_title') }}</h2>

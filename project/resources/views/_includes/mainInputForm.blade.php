@@ -19,7 +19,8 @@
     <div class="field">
         <div class="control">
             <button type="submit" name="submit" class="button is-primary" title="Create Disposable Secret"><i class="fa fa-check"></i>Create</button>
-            <a href="auth" class="button is-default" title="Save Secret"><i class="fa fa-lock"></i>Save</a>
+            <!-- Todo: Add logic here if user is authenticated or not -->
+            <a href="/login" class="button is-default" title="Save Secret"><i class="fa fa-lock"></i>Save</a>
         </div>
     </div>
     <!-- /.field -->
