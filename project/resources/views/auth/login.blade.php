@@ -1,42 +1,62 @@
 @php($page_active = 'auth')
-@extends('_layouts/default')
+@extends('_layouts/splash')
 
 @section('content')
-    <div class="header">
-        <h1>{{ Config::get('app.app_title') }}</h1>
-        <h2>Sign-In</h2>
+
+<section class="hero is-dark is-fullheight">
+    <div class="hero-head has-text-centered">
+        <h2 class="hero-title">{{ Config::get('app.app_title') }}</h2>
     </div>
-    <div class="content content-narrow">
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-        <form class="form validate-form pure-form pure-form-stacked" role="form" method="POST" action="{{ url('/auth/login') }}">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-            <label class="control-label required">Email Address</label>
-            <input type="email" class="pure-input-1 required" data-parsley-type="email" name="email" value="{{ old('email') }}" placeholder="email@domain.com" required>
-
-            <label class="control-label required">Password</label>
-            <input type="password" class="pure-input-1 required" name="password" required>
-
-            <label>
-                <input type="checkbox" name="remember"> Remember Me
-            </label>
-
-            <div class="action-bar">
-                <a href="{{ route('home') }}" class="pure-button">Cancel</a>
-                <a href="{{ route('reset') }}" class="pure-button">Forgot</a>
-                <button type="submit" class="pure-button pure-button-primary">Login</button>
+    <div class="hero-body">
+        <div class="container container-narrow">
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </form>
+            @endif
+
+            <form class="form box" role="form" method="POST" action="{{ url('/auth/login') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <div class="field">
+                    <div class="control">
+                        {!! Form::label('email', 'Email', ['class'=>'label required']) !!}
+                        {!! Form::email('email', null, ['required', 'class'=>'input', 'placeholder'=>'email@domain.com']) !!}
+                    </div>
+                </div>
+                <!-- /.field -->
+
+                <div class="field">
+                    <div class="control">
+                        {!! Form::label('password', 'Password', ['class'=>'label required']) !!}
+                        {!! Form::password('password', ['required', 'class'=>'input', 'placeholder'=>'password']) !!}
+                    </div>
+                </div>
+                <!-- /.field -->
+
+                <div class="field">
+                    <div class="control">
+                        {!! Form::label('checkbox', 'Remember Me', ['class'=>'label']) !!}
+                        {!! Form::checkbox('checkbox', null) !!}
+                    </div>
+                </div>
+                <!-- /.field -->
+
+                <div class="field">
+                    <div class="control">
+                    <button type="submit" class="button is-primary">Login</button>
+                    <a href="{{ route('reset') }}" class="button is-default">Forgot</a>
+                    <a href="{{ route('home') }}" class="button is-link">Cancel</a>
+                    </div>
+                </div>
+                <!-- /.field -->
+            </form>
+        </div>
     </div>
-    <!-- ./content -->
+</section>
 @endsection
