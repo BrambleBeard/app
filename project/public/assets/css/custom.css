@@ -80,6 +80,8 @@ a:hover, a:visited { color: #3273dc; }
 
 @media screen and (max-width: 999px) { .hero-title { font-size: 3em; padding-top: .25em; } }
 @media screen and (max-width: 639px) { .hero-title { font-size: 2em; padding-top: .25em; } }
+.notification:not(:last-child) { margin-bottom: 0; }
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* custom
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
