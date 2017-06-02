@@ -19,7 +19,7 @@
             <a class="nav-item is-tab" href="/saved">Saved</a>
             <a class="nav-item is-tab" href="/generate">Password</a>
             <a class="nav-item is-tab" href="/account">Derek</a>
-            <a class="nav-item is-tab" href="/">Sign-Out</a>
+            <a class="nav-item is-tab" href="/logout">Sign-Out</a>
         </div>
         <!-- ./nav-right -->
     </div>
