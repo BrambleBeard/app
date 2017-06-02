@@ -51,7 +51,7 @@ class PagesController extends Controller
 
     public function generateSecret()
     {
-        $title = "Generate Secrets";
+        $title = "Password Generator";
         $page_active = "generate";
         return view('pages.generate', compact('title','page_active'));
     }
