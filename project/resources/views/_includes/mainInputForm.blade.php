@@ -1,5 +1,5 @@
 
-{!! Form::open( ['route' => 'storeSecret', 'class' => 'pure-form', 'novalidate'] ) !!}
+{!! Form::open( ['route' => 'storeSecret', 'class' => 'createForm', 'novalidate'] ) !!}
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="field">
@@ -25,4 +25,4 @@
     </div>
     <!-- /.field -->
 {!! Form::close() !!}
-<!-- /.pure-form -->
+<!-- /.createForm -->
