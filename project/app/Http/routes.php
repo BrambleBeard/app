@@ -13,19 +13,22 @@ Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
     // Route::get('/account',['as'=>'account', 'uses'=>'PagesController@account']);
 });
 
+Route::get('account', ['as'=>'account', 'uses'=>'AccountController@index']);
+Route::get('saved', ['as'=>'savedSecrets', 'uses'=>'PagesController@savedSecrets']);
+Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'PagesController@storeSecret']);
+
 /*
 |--------------------------------------------------------------------------
 | Place routes that DO NOT require authentication here
 |--------------------------------------------------------------------------
 */
 Route::get('/', ['as'=>'home', 'uses'=>'PagesController@splash']);
-Route::get('/new', ['as'=>'newSecret', 'uses'=>'PagesController@newSecret']);
-Route::get('/generate', ['as'=>'generateSecret', 'uses'=>'PagesController@generateSecret']);
-Route::get('/saved', ['as'=>'savedSecrets', 'uses'=>'PagesController@savedSecrets']);
+Route::get('new', ['as'=>'newSecret', 'uses'=>'PagesController@newSecret']);
+Route::get('generate', ['as'=>'generateSecret', 'uses'=>'PagesController@generateSecret']);
+
 Route::get('about',['as'=>'about', 'uses'=>'PagesController@about']);
 Route::get('contact',['as'=>'contact', 'uses'=>'PagesController@contact']);
-Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'PagesController@storeSecret']);
-Route::post('storeContact',['as'=>'storeContact', 'uses'=>'PagesController@storeContact']);
+
 // Authentication registration routes...
 Route::get('login',['as'=>'login', 'uses'=>'Auth\AuthController@getLogin']);
 Route::get('logout',['as'=>'logout', 'uses'=>'Auth\AuthController@getLogout']);
