@@ -1,9 +1,6 @@
 /*
-Use this sass command to create a clean, compact, and readable stylesheet.
-sass assets/scss/custom.scss:assets/css/custom.css --style compact
-
-Use this sass command to create a minified stylesheet.
-sass assets/scss/custom.scss:assets/css/custom.min.css --style compressed
+Use this sass command to generate compact and compressed
+sass assets/scss/custom.scss:assets/css/custom.css --style compact && sass assets/scss/custom.scss:assets/css/custom.min.css --style compressed
 */
 /* rem conversion cheatsheet */
 /* 8px = 0.5rem 9px = 0.5625rem
@@ -86,6 +83,8 @@ a:hover, a:visited { color: #3273dc; }
 /* custom
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .container-narrow { max-width: 50%; }
+
+.container-medium { max-width: 66%; }
 
 .main-content { padding-top: 1.75em; padding-bottom: 2em; }
 

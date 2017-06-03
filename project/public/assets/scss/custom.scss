@@ -1,9 +1,6 @@
 /*
-Use this sass command to create a clean, compact, and readable stylesheet.
-sass assets/scss/custom.scss:assets/css/custom.css --style compact
-
-Use this sass command to create a minified stylesheet.
-sass assets/scss/custom.scss:assets/css/custom.min.css --style compressed
+Use this sass command to generate compact and compressed
+sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.css --style compact && sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.min.css --style compressed
 */
 
 
@@ -225,6 +222,10 @@ a:visited {
 
 .container-narrow {
     max-width: 50%;
+}
+
+.container-medium {
+    max-width: 66%;
 }
 
 .main-content {
