@@ -15,10 +15,14 @@
         <!-- .nav-toggle -->
 
         <div class="nav-right nav-menu">
-            <a class="nav-item is-tab" href="/new">New</a>
-            <a class="nav-item is-tab" href="/saved">Saved</a>
-            <a class="nav-item is-tab" href="/generate">Password</a>
-            <a class="nav-item is-tab" href="/account">Derek</a>
+            <a class="nav-item is-tab
+                @if($page_active=="new")is-active @endif" href="/new">New</a>
+            <a class="nav-item is-tab
+                @if($page_active=="saved")is-active @endif" href="/saved">Saved</a>
+            <a class="nav-item is-tab
+                @if($page_active=="generate")is-active @endif" href="/generate">Password</a>
+            <a class="nav-item is-tab
+                @if($page_active=="account")is-active @endif" href="/account">Derek</a>
             <a class="nav-item is-tab" href="/logout">Sign-Out</a>
         </div>
         <!-- ./nav-right -->
