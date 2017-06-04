@@ -1,7 +1,7 @@
 <form action="generate">
 
     <div class="notification is-warning">
-        <h3 class="title is-2 has-text-centered" id="randomString"></h3>
+        <h3 class="title is-2 has-text-centered" id="randomString">{{ password }}</h3>
     </div>
     <!-- /.notification -->
 
@@ -31,7 +31,7 @@
 
     <div class="field is-grouped">
         <p class="control">
-            <button class="button is-warning">Regenerate</button>
+            <button @click.prevent="generatePassword" class="button is-warning">Regenerate</button>
         </p>
         <p class="control">
             <button class="button is-primary">Copy</button>
@@ -42,24 +42,26 @@
 </form>
 
 <script>
-    var stringLength = 18;
-    var randomString = randomizeString(stringLength);
-    applyStringToId( "randomString", randomString );
+    var vm = new Vue({
+        // We have to set delimiters because Jekyll and Vue use the same
+        // mustache templating.
+        // delimiters: ['${', '}'],
+        el: '#layout',
+        data: {
+            password: '',
+            passwordLength: 12
+        },
+        methods: {
+            generatePassword: function(){
+                var alnu = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                var generated = Array(this.passwordLength).join().split(',').map(function() {
+                    return alnu.charAt(Math.floor(Math.random() * alnu.length));
+                }).join('');
+                this.password = generated;
+                console.log("Generated new password: "+generated);
+            }
+        }
+    });
 
-    function randomizeString( lengthOfString ) {
-        var alnu = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        var ret = Array(lengthOfString).join().split(',').map(function() {
-            return alnu.charAt(Math.floor(Math.random() * alnu.length));
-        }).join('');
-        return ret;
-    }
-
-    function applyStringToId( htmlId, randomString ){
-        document.querySelector(`#${htmlId}`).innerHTML = randomString;
-    };
-
-    document.getElementById('randomizer').onclick = function(e){
-        var randomString = randomizeString(stringLength);
-        applyStringToId( "randomString", randomString );
-    };
+    vm.generatePassword();
 </script>
