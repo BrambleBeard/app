@@ -1,3 +1,4 @@
+<div id="vueApp">
 <form action="generate">
 
     <div class="notification is-warning">
@@ -6,9 +7,9 @@
     <!-- /.notification -->
 
     <div class="field">
-        <label class="label">Length of Password</label>
+        <label class="label">Length of Password (4-64)</label>
         <p class="control">
-            <input class="input" type="number" name="passwordLength" min="4" max="64" value="12">
+            <input class="input" type="number" name="passwordLength" min="4" max="64" v-model.number="passwordLength">
         </p>
     </div>
     <!-- /.field -->
@@ -16,7 +17,7 @@
     <div class="field">
         <label class="label">How many Digits?</label>
         <p class="control">
-            <input class="input" type="number" name="passwordLength" min="0" max="32" value="0">
+            <input class="input" type="number" name="passwordLength" min="0" max="32" v-model.number="digitCount">
         </p>
     </div>
     <!-- /.field -->
@@ -24,7 +25,7 @@
     <div class="field">
         <label class="label">How many Special Characters?</label>
         <p class="control">
-            <input class="input" type="number" name="passwordLength" min="0" max="32" value="0">
+            <input class="input" type="number" name="passwordLength" min="0" max="32" v-model.number="charCount">
         </p>
     </div>
     <!-- /.field -->
@@ -40,21 +41,21 @@
     <!-- /.field -->
 
 </form>
+</div>
 
 <script>
     var vm = new Vue({
-        // We have to set delimiters because Jekyll and Vue use the same
-        // mustache templating.
-        // delimiters: ['${', '}'],
-        el: '#layout',
+        el: '#vueApp',
         data: {
             password: '',
-            passwordLength: 12
+            passwordLength: 12,
+            digitCount: 2,
+            charCount: 0
         },
         methods: {
             generatePassword: function(){
                 var alnu = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                var generated = Array(this.passwordLength).join().split(',').map(function() {
+                var generated = Array(parseInt(this.passwordLength)).join().split(',').map(function() {
                     return alnu.charAt(Math.floor(Math.random() * alnu.length));
                 }).join('');
                 this.password = generated;
