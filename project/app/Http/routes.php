@@ -13,6 +13,7 @@ Route::controllers([
 */
 Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
     Route::get('account', ['as'=>'account', 'uses'=>'AccountController@index']);
+    Route::get('generate', ['as'=>'generateSecret', 'uses'=>'PagesController@generateSecret']);
     Route::get('new', ['as'=>'newSecret', 'uses'=>'PagesController@newSecret']);
     Route::post('storeAccount',['as'=>'storeAccount', 'uses'=>'PagesController@storeAccount']);
     Route::get('saved', ['as'=>'savedSecrets', 'uses'=>'PagesController@savedSecrets']);
@@ -26,7 +27,6 @@ Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/', ['as'=>'home', 'uses'=>'PagesController@splash']);
-Route::get('generate', ['as'=>'generateSecret', 'uses'=>'PagesController@generateSecret']);
 Route::get('about',['as'=>'about', 'uses'=>'PagesController@about']);
 Route::get('contact',['as'=>'contact', 'uses'=>'PagesController@contact']);
 
