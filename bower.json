@@ -16,6 +16,7 @@
         "tests"
     ],
     "dependencies": {
+        "animate.css": "^3.5.2",
         "bulma": "^0.4.1",
         "vue": "^2.3.3",
         "fontawesome": "^4.7.0",
