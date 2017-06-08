@@ -1,8 +1,6 @@
 <div id="vueApp">
-<form action="generate">
-
     <div class="notification is-warning">
-        <h3 class="title is-2 has-text-centered" id="randomString">{{ password }}</h3>
+        <h3 class="title is-2 has-text-centered" v-bind:class="{ 'animated rubberBand':animationOne, 'animated bounce':animationTwo }" id="randomString">{{ password }}</h3>
     </div>
     <!-- /.notification -->
 
@@ -14,20 +12,20 @@
     </div>
     <!-- /.field -->
 
-    <div class="field">
+    <!--<div class="field">
         <label class="label">How many Digits?</label>
         <p class="control">
             <input class="input" type="number" name="passwordLength" min="0" max="32" v-model.number="digitCount">
         </p>
-    </div>
+    </div>-->
     <!-- /.field -->
 
-    <div class="field">
+    <!--<div class="field">
         <label class="label">How many Special Characters?</label>
         <p class="control">
             <input class="input" type="number" name="passwordLength" min="0" max="32" v-model.number="charCount">
         </p>
-    </div>
+    </div>-->
     <!-- /.field -->
 
     <div class="field is-grouped">
@@ -35,18 +33,21 @@
             <button @click.prevent="generatePassword" class="button is-warning">Regenerate</button>
         </p>
         <p class="control">
-            <button class="button is-primary">Copy</button>
+            <button class="button is-primary"
+                v-clipboard:copy="password"
+                v-clipboard:success="onCopy"
+                v-clipboard:error="onError">Copy</button>
         </p>
     </div>
     <!-- /.field -->
-
-</form>
 </div>
 
 <script>
     var vm = new Vue({
         el: '#vueApp',
         data: {
+            animationOne: false,
+            animationTwo: true,
             password: '',
             passwordLength: 12,
             digitCount: 2,
@@ -54,12 +55,24 @@
         },
         methods: {
             generatePassword: function(){
-                var alnu = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                this.animationOne = !this.animationOne;
+                this.animationTwo = !this.animationTwo;
+                var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                var numbs = "0123456789";
+                var chars = "!@#$%^&*()_-=+";
+                var passwordCharacters = alpha+numbs+chars;
+
                 var generated = Array(parseInt(this.passwordLength)).join().split(',').map(function() {
-                    return alnu.charAt(Math.floor(Math.random() * alnu.length));
+                    return passwordCharacters.charAt(Math.floor(Math.random() * passwordCharacters.length));
                 }).join('');
                 this.password = generated;
                 console.log("Generated new password: "+generated);
+            },
+            onCopy: function (e) {
+                console.info('Copied: ' + e.text);
+            },
+            onError: function (e) {
+                console.info('Copy Failed');
             }
         }
     });
