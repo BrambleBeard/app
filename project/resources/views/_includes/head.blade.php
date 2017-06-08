@@ -18,6 +18,7 @@
 
 <link rel="stylesheet" href="{{ asset('/assets/vendor/bulma/css/bulma.css') }}">
 <link rel="stylesheet" href="{{ asset('/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/assets/vendor/animate.css/animate.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/assets/css/custom.min.css') }}">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
