@@ -12,6 +12,26 @@
     </div>
     <!-- /.field -->
 
+    <div class="field">
+        <p class="control">
+        <label class="checkbox">
+            <input type="checkbox" name="includeNumbs" id="includeNumbs" v-model="includeNumbs">
+            Include digits (<strong>{{ numbs }}</strong>)
+        </label>
+        </p>
+    </div>
+    <!-- /.field -->
+
+    <div class="field">
+        <p class="control">
+        <label class="checkbox">
+            <input type="checkbox" name="includeChars" id="includeChars" v-model="includeChars">
+            Include Special Characters (<strong>{{ chars }}</strong>)
+        </label>
+        </p>
+    </div>
+    <!-- /.field -->
+
     <!--<div class="field">
         <label class="label">How many Digits?</label>
         <p class="control">
@@ -51,16 +71,24 @@
             password: '',
             passwordLength: 12,
             digitCount: 2,
-            charCount: 0
+            charCount: 0,
+            alpha: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            numbs: "0123456789",
+            includeNumbs: false,
+            chars: "!@#$%^&*()_-=+",
+            includeChars: false
         },
         methods: {
             generatePassword: function(){
                 this.animationOne = !this.animationOne;
                 this.animationTwo = !this.animationTwo;
-                var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                 var numbs = "0123456789";
                 var chars = "!@#$%^&*()_-=+";
-                var passwordCharacters = alpha+numbs+chars;
+                var passwordCharacters = this.alpha;
+                if (this.includeNumbs)
+                    passwordCharacters += this.numbs;
+                if (this.includeChars)
+                    passwordCharacters += this.chars;
 
                 var generated = Array(parseInt(this.passwordLength)).join().split(',').map(function() {
                     return passwordCharacters.charAt(Math.floor(Math.random() * passwordCharacters.length));
