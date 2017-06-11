@@ -1,6 +1,6 @@
 /*
 Use this sass command to generate compact and compressed
-sass assets/scss/custom.scss:assets/css/custom.css --style compact && sass assets/scss/custom.scss:assets/css/custom.min.css --style compressed
+sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.css --style compact && sass project/public/assets/scss/custom.scss:project/public/assets/css/custom.min.css --style compressed
 */
 /* rem conversion cheatsheet */
 /* 8px = 0.5rem 9px = 0.5625rem
@@ -77,6 +77,8 @@ a:hover, a:visited { color: #3273dc; }
 
 @media screen and (max-width: 999px) { .hero-title { font-size: 3em; padding-top: .25em; } }
 @media screen and (max-width: 639px) { .hero-title { font-size: 2em; padding-top: .25em; } }
+.notification { border-radius: 0px; }
+
 .notification:not(:last-child) { margin-bottom: 0; }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

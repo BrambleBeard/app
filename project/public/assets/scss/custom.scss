@@ -209,6 +209,10 @@ a:visited {
     }
 }
 
+.notification {
+    border-radius: 0px;
+}
+
 .notification:not(:last-child) {
     margin-bottom: 0;
 }
