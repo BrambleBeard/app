@@ -10,13 +10,11 @@
     <div class="hero-body">
         <div class="container container-narrow">
             @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div class="notification is-warning">
+                <h3><strong>Whoops!</strong> There were some problems with your input.</h3>
+                @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+                @endforeach
             </div>
             @endif
 
