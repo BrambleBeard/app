@@ -22,8 +22,7 @@
             <a class="nav-item is-tab
                 @if($page_active=="generate")is-active @endif" href="/generate">Password</a>
             <a class="nav-item is-tab
-                @if($page_active=="account")is-active @endif" href="/account">Derek</a>
-            <a class="nav-item is-tab" href="/logout">Sign-Out</a>
+                @if($page_active=="account")is-active @endif" href="/account">{{ Auth::user()->first }} {{ Auth::user()->last }}</a>
         </div>
         <!-- ./nav-right -->
     </div>
