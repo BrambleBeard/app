@@ -9,7 +9,7 @@ use App\Message;
 use App\Secret;
 use App\Http\Requests;
 
-class PagesController extends Controller
+class PageController extends Controller
 {
     public function splash()
     {
