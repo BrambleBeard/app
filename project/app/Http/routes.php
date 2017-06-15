@@ -13,12 +13,13 @@ Route::controllers([
 */
 Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
     Route::resource('account','AccountController');
+    Route::resource('secrets','SecretController');
     // Route::get('account', ['as'=>'account', 'uses'=>'AccountController@index']);
-    Route::get('generate', ['as'=>'generateSecret', 'uses'=>'PagesController@generateSecret']);
-    Route::get('new', ['as'=>'newSecret', 'uses'=>'PagesController@newSecret']);
-    Route::post('storeAccount',['as'=>'storeAccount', 'uses'=>'PagesController@storeAccount']);
-    Route::get('saved', ['as'=>'savedSecrets', 'uses'=>'PagesController@savedSecrets']);
-    Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'PagesController@storeSecret']);
+    Route::get('generate', ['as'=>'generateSecret', 'uses'=>'PageController@generateSecret']);
+    Route::get('new', ['as'=>'newSecret', 'uses'=>'PageController@newSecret']);
+    Route::post('storeAccount',['as'=>'storeAccount', 'uses'=>'PageController@storeAccount']);
+    Route::get('saved', ['as'=>'savedSecrets', 'uses'=>'PageController@savedSecrets']);
+    Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'PageController@storeSecret']);
 });
 
 
@@ -27,9 +28,9 @@ Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
 | Place routes that DO NOT require authentication here
 |--------------------------------------------------------------------------
 */
-Route::get('/', ['as'=>'home', 'uses'=>'PagesController@splash']);
-Route::get('about',['as'=>'about', 'uses'=>'PagesController@about']);
-Route::get('contact',['as'=>'contact', 'uses'=>'PagesController@contact']);
+Route::get('/', ['as'=>'home', 'uses'=>'PageController@splash']);
+Route::get('about',['as'=>'about', 'uses'=>'PageController@about']);
+Route::get('contact',['as'=>'contact', 'uses'=>'PageController@contact']);
 
 
 /*
