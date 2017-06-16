@@ -81,7 +81,7 @@ class PageController extends Controller
             session()->flash('flash_success','Secret created, url is: '.$secret->url.'.');
         }
 
-        return redirect()->route('home');
+        return redirect()->route('newSecret');
     }
 
     /**
