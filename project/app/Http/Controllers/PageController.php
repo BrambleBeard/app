@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use Validator;
 use App\Message;
@@ -46,7 +47,8 @@ class PageController extends Controller
     {
         $title = "Saved Secrets";
         $page_active = "saved";
-        return view('pages.saved', compact('title','page_active'));
+        $secrets = DB::table('secrets')->get();
+        return view('pages.saved', compact('title','page_active','secrets'));
     }
 
     public function generateSecret()

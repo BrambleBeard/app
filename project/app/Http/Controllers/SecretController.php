@@ -14,7 +14,6 @@ class SecretController extends Controller
         $title = "Secrets";
         $page_active = "secrets";
         $rteId = "rich-text-editor";
-        // $user = User::findOrFail(1);
         $secrets = DB::table('secrets')->get();
 
         return view('secret.index', compact('title','page_active','rteId','secrets'));

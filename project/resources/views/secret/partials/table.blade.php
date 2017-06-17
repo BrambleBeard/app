@@ -1,3 +1,4 @@
+
 <table class="table is-striped" id="secretsTable">
     <thead>
         <tr>
