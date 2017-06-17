@@ -152,8 +152,8 @@ a:visited {
 }
 
 .section {
-    // padding: 3rem 1.5rem;
-    padding: 0;
+    padding: 1em 0;
+    background-color: initial;
 }
 
 .nav-item img {
@@ -161,7 +161,7 @@ a:visited {
 }
 
 .nav {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .hero.has-landing-page-image p {

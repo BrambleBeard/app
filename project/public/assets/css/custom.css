@@ -57,11 +57,11 @@ a:hover, a:visited { color: #3273dc; }
 
 .box { border-radius: 0px; background: whitesmoke; }
 
-.section { padding: 0; }
+.section { padding: 1em 0; background-color: initial; }
 
 .nav-item img { padding-right: 1em; }
 
-.nav { margin-bottom: 2em; }
+.nav { margin-bottom: 1em; }
 
 .hero.has-landing-page-image p { color: whitesmoke; }
 
@@ -102,5 +102,7 @@ footer.hero p { color: whitesmoke; }
 .has-landing-page-image { background-color: #F62459; background-image: linear-gradient(rgba(9, 48, 40, 0.6), rgba(35, 122, 87, 0.6)), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1468499419136-228128db8f7a?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=); }
 
 .fa { padding-right: .7em; }
+
+.has-modal { overflow: hidden !important; }
 
 /*# sourceMappingURL=custom.css.map */
