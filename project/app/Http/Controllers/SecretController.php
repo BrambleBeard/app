@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 
@@ -14,7 +15,8 @@ class SecretController extends Controller
         $page_active = "secrets";
         $rteId = "rich-text-editor";
         // $user = User::findOrFail(1);
+        $secrets = DB::table('secrets')->get();
 
-        return view('secret.index', compact('title','page_active','rteId'));
+        return view('secret.index', compact('title','page_active','rteId','secrets'));
     }
 }
