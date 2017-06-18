@@ -3,6 +3,8 @@
     <thead>
         <tr>
             <th>Secret</th>
+            <th>Created</th>
+            <th>URL</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -10,6 +12,8 @@
         @foreach( $secrets as $secret)
         <tr>
             <td>{{ $secret->content }}</td>
+            <td>{{ $secret->created_at }}</td>
+            <td>{{ $secret->url }}</td>
             <td>Action</td>
         </tr>
         @endforeach

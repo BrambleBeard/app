@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="section">
-    <div class="container container-narrow">
+    <div class="container">
 
         <h2 class="title is-3">My Secrets</h2>
         <div class="main-content">
