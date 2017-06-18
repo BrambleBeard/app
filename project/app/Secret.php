@@ -18,7 +18,7 @@ class Secret extends Model
      *
      * @var array
      */
-    protected $fillable = ['content', 'passcode', 'url'];
+    protected $fillable = ['title','content','passcode','url'];
 
     /**
      * The attributes excluded from the model's JSON form.
