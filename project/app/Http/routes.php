@@ -14,12 +14,11 @@ Route::controllers([
 Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
     Route::resource('account','AccountController');
     Route::resource('secrets','SecretController');
-    // Route::get('account', ['as'=>'account', 'uses'=>'AccountController@index']);
-    Route::get('generate', ['as'=>'generateSecret', 'uses'=>'PageController@generateSecret']);
-    Route::get('new', ['as'=>'newSecret', 'uses'=>'PageController@newSecret']);
+    Route::get('generate', ['as'=>'generate', 'uses'=>'SecretController@generate']);
+    Route::get('new', ['as'=>'create', 'uses'=>'SecretController@create']);
     Route::post('storeAccount',['as'=>'storeAccount', 'uses'=>'PageController@storeAccount']);
-    Route::get('saved', ['as'=>'savedSecrets', 'uses'=>'PageController@savedSecrets']);
-    Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'PageController@storeSecret']);
+    Route::get('saved', ['as'=>'saved', 'uses'=>'SecretsController@saved']);
+    Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'SecretController@storeSecret']);
 });
 
 
