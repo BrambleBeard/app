@@ -4,6 +4,13 @@
 
     <div class="field">
         <div class="control">
+            {!! Form::text('title', null, ['class'=>'input', 'placeholder'=>'Optionally add a title']) !!}
+        </div>
+    </div>
+    <!-- /.field -->
+
+    <div class="field">
+        <div class="control">
             {!! Form::textarea('content', null, ['required', 'id'=>$rteId, 'class'=>'textarea', 'placeholder'=>'Enter your secret here ...']) !!}
         </div>
     </div>
