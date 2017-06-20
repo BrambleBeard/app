@@ -17,7 +17,7 @@ Route::group(['middleware' => ['auth', 'onlyenabledusers']], function () {
     Route::get('generate', ['as'=>'generate', 'uses'=>'SecretController@generate']);
     Route::get('new', ['as'=>'create', 'uses'=>'SecretController@create']);
     Route::post('storeAccount',['as'=>'storeAccount', 'uses'=>'PageController@storeAccount']);
-    Route::get('saved', ['as'=>'saved', 'uses'=>'SecretsController@saved']);
+    Route::get('saved', ['as'=>'saved', 'uses'=>'SecretController@saved']);
     Route::post('storeSecret',['as'=>'storeSecret', 'uses'=>'SecretController@storeSecret']);
 });
 
