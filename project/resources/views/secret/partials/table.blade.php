@@ -11,10 +11,10 @@
     <tbody>
         @foreach( $secrets as $secret)
         <tr>
-            <td>{{ $secret->content }}</td>
+            <td>{{ $secret->title }}</td>
             <td>{{ $secret->created_at }}</td>
             <td>{{ $secret->url }}</td>
-            <td>Action</td>
+            <td>[<a href="">V</a>] [<a href="">E</a>] [<a href="">D</a>]</td>
         </tr>
         @endforeach
     </tbody>
