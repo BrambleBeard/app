@@ -58,6 +58,7 @@
                 v-clipboard:success="onCopy"
                 v-clipboard:error="onError">Copy</button>
         </p>
+        <p class="control"><button class="button is-primary">Save as Secret</button></p>
     </div>
     <!-- /.field -->
 </div>
