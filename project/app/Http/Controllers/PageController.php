@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 use Validator;
 use App\Message;
-use App\Secret;
 use App\Http\Requests;
 
 class PageController extends Controller
