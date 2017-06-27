@@ -16,11 +16,7 @@
 
         <div class="nav-right nav-menu">
             <a class="nav-item is-tab
-                @if($page_active=="secrets")is-active @endif" href="/secrets">Secrets</a>
-            <a class="nav-item is-tab
-                @if($page_active=="new")is-active @endif" href="/new">New</a>
-            <a class="nav-item is-tab
-                @if($page_active=="saved")is-active @endif" href="/saved">Saved</a>
+                @if($page_active=="dashboard")is-active @endif" href="/dashboard">Dashboard</a>
             <a class="nav-item is-tab
                 @if($page_active=="generate")is-active @endif" href="/generate">Password</a>
             <a class="nav-item is-tab
