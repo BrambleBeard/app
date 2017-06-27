@@ -27,6 +27,13 @@ class PageController extends Controller
         return view('pages.about', compact('title','page_active', 'content'));
     }
 
+    public function dashboard()
+    {
+        $title = "Dashboard";
+        $page_active = "dashboard";
+        return view('dashboard.index', compact('title','page_active'));
+    }
+
     public function contact()
     {
         $title = "Contact";
