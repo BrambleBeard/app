@@ -11,14 +11,11 @@ use App\Http\Requests;
 
 class PageController extends Controller
 {
-    public function splash()
-    {
-        $title = "Home";
-        $page_active = "home";
-        $rteId = "rich-text-editor";
-        return view('pages.splash', compact('title','page_active','rteId'));
-    }
-
+    /**
+     * About page
+     *
+     * @return Response
+     */
     public function about()
     {
         $title = "About";
@@ -27,6 +24,24 @@ class PageController extends Controller
         return view('pages.about', compact('title','page_active', 'content'));
     }
 
+
+    /**
+     * Contact page
+     *
+     * @return Response
+     */
+    public function contact()
+    {
+        $title = "Contact";
+        $page_active = "contact";
+        return view('pages.contact', compact('title','page_active'));
+    }
+
+    /**
+     * Dashboard once logged in
+     *
+     * @return Response
+     */
     public function dashboard()
     {
         $title = "Dashboard";
@@ -34,12 +49,19 @@ class PageController extends Controller
         return view('dashboard.index', compact('title','page_active'));
     }
 
-    public function contact()
+    /**
+     * Splash page or home page
+     *
+     * @return Response
+     */
+    public function splash()
     {
-        $title = "Contact";
-        $page_active = "contact";
-        return view('pages.contact', compact('title','page_active'));
+        $title = "Home";
+        $page_active = "home";
+        $rteId = "rich-text-editor";
+        return view('pages.splash', compact('title','page_active','rteId'));
     }
+
 
     /**
      * Store a newly created resource in storage.
